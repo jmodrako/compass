@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CompasNetguru</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="north">NORTH</string>
+    <string name="east">EAST</string>
+    <string name="south">SOUTH</string>
+    <string name="west">WEST</string>
+</resources>
