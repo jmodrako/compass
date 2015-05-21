@@ -9,6 +9,9 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import org.androidannotations.annotations.EView;
+import org.androidannotations.annotations.res.ColorRes;
+import org.androidannotations.annotations.res.DimensionPixelOffsetRes;
+import org.androidannotations.annotations.res.DrawableRes;
 import pl.modrakowski.compasnetguru.R;
 
 import static java.lang.Math.*;
@@ -23,36 +26,38 @@ import static java.lang.Math.toRadians;
 @EView
 public class CompassView extends View {
 
-	private Drawable compassDrawable;
+	@DimensionPixelOffsetRes(R.dimen.target_circle_radius) int targetRadius;
+	@DimensionPixelOffsetRes(R.dimen.compass_size) int compassSize;
+	@DimensionPixelOffsetRes(R.dimen.target_circle_size) int targetCircleSize;
+
+	@DrawableRes(R.drawable.compass) Drawable compassDrawable;
+	@ColorRes(R.color.target_color) int targetColor;
+
 	private Paint targetPaint;
 
-	private double targetRadius;
 	private double degreeRad;
 	private double targetDegreeRad;
-
-	private int compassSize;
-	private int targetCircleSize;
 	private int centerX, centerY;
 
 	public CompassView(Context context) {
 		super(context);
-		init(context);
+		init();
 	}
 
 	public CompassView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		init(context);
+		init();
 	}
 
 	public CompassView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
-		init(context);
+		init();
 	}
 
 	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 	public CompassView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
 		super(context, attrs, defStyleAttr, defStyleRes);
-		init(context);
+		init();
 	}
 
 	public void setDegreeRad(double degreeRad) {
@@ -67,6 +72,8 @@ public class CompassView extends View {
 
 	@Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
+
+		targetPaint.setColor(targetColor);
 
 		final int width = getMeasuredWidth();
 		final int height = getMeasuredHeight();
@@ -85,15 +92,8 @@ public class CompassView extends View {
 		drawTargetDot(canvas);
 	}
 
-	private void init(Context context) {
-		compassSize = context.getResources().getDimensionPixelOffset(R.dimen.compass_size);
-		targetCircleSize = context.getResources().getDimensionPixelOffset(R.dimen.target_circle_size);
-		targetRadius = context.getResources().getDimensionPixelOffset(R.dimen.target_circle_radius);
-
+	private void init() {
 		targetPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		targetPaint.setColor(context.getResources().getColor(R.color.target_color));
-
-		compassDrawable = context.getResources().getDrawable(R.drawable.compass);
 	}
 
 	private void drawTargetDot(Canvas canvas) {

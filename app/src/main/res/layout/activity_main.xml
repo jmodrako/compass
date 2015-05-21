@@ -9,37 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/compass"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/mainNorth"
-        style="@style/WorldDirectionStyle"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/north"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/mainEast"
-        style="@style/WorldDirectionStyle"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:text="@string/east"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/mainSouth"
-        style="@style/WorldDirectionStyle"
-        android:layout_above="@+id/mainLocationInput"
-        android:layout_centerHorizontal="true"
-        android:text="@string/south"
-        android:visibility="gone" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,15 +30,7 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/mainWest"
-        style="@style/WorldDirectionStyle"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:text="@string/west"
-        android:visibility="gone" />
-
-    <pl.modrakowski.compasnetguru.android.view.CompassView
+    <pl.modrakowski.compasnetguru.android.view.CompassView_
         android:id="@+id/mainCompasView"
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -97,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:hint="lat"
+            android:hint="@string/lat"
             android:inputType="numberDecimal"
             android:text="12.463396" />
 
@@ -107,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_weight="1"
-            android:hint="lng"
+            android:hint="@string/lng"
             android:inputType="numberDecimal"
             android:text="19.511719" />
     </LinearLayout>
@@ -117,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Start Tracking"
+        android:text="@string/start_tracking"
         android:textAllCaps="true" />
 
 </RelativeLayout>
